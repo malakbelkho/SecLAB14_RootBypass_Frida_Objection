@@ -3,8 +3,6 @@
 # 🛡️ LAB 14 — Bypass Root Detection sur Android  
 ## Techniques Dynamiques avec Frida, Objection et Hooks Natifs
 
-<img src="screenshots/androgoat_home.png" width="70%" alt="AndroGoat Home">
-
 <br>
 
 ![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
