@@ -1,0 +1,8 @@
+# APK / binaires lourds
+*.apk
+frida-server
+frida-server-*.xz
+
+# logs / cache
+*.log
+__pycache__/

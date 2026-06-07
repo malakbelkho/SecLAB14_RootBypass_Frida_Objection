@@ -1,0 +1,13 @@
+- L’environnement de travail a été préparé sous Windows 10 avec PowerShell.
+- ADB a détecté correctement l’émulateur Android sous l’identifiant emulator-5554.
+- Frida côté PC a été vérifié et la communication avec l’émulateur a fonctionné après le lancement de frida-server.
+- L’application AndroGoat a été installée avec succès sur l’émulateur.
+- Un premier test d’injection avec hello.js a permis de confirmer que les scripts Frida pouvaient être exécutés dans le processus de l’application.
+- Avant tout contournement, l’application détectait l’état root de l’environnement.
+- Le script bypass_root_java.js a permis de neutraliser les vérifications Java classiques telles que Build.TAGS, File.exists() et Runtime.exec().
+- Après le bypass Java, une partie de la détection root a été neutralisée.
+- Le script bypass_root_native.js a ensuite été ajouté pour bloquer certains accès natifs vers des chemins suspects comme /system/bin/su et busybox.
+- La combinaison des hooks Java et natifs a permis d’améliorer le contournement de la détection root.
+- Objection a également été testé comme solution plus rapide et plus automatisée.
+- Certaines tentatives avec Objection ont provoqué un crash ou un comportement instable, ce qui montre que les outils automatisés ne sont pas toujours suffisants selon l’application ciblée.
+- Le test final a montré qu’un bypass dynamique peut être réalisé sans modifier l’APK, uniquement par instrumentation à l’exécution.

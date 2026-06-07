@@ -1,0 +1,40 @@
+[1] Vérification des outils
+python --version
+pip --version
+frida --version
+python -c "import frida; print(frida.__version__)"
+adb version
+adb devices
+python -m pip show objection
+objection --help
+
+[2] Vérification de l'architecture de l'émulateur
+adb shell getprop ro.product.cpu.abi
+
+[3] Installation de l'application cible
+adb install -r .\apk\AndroGoat.apk
+
+[4] Déploiement de frida-server
+adb push frida-server /data/local/tmp/frida-server
+adb shell chmod 755 /data/local/tmp/frida-server
+adb root
+adb shell "/data/local/tmp/frida-server -l 0.0.0.0 >/dev/null 2>&1 &"
+
+[5] Redirection des ports Frida
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043
+
+[6] Vérification de la communication Frida
+frida-ps -Uai
+
+[7] Test d’injection simple
+frida -U -f owasp.sat.agoat -l .\scripts\hello.js
+
+[8] Bypass Java
+frida -U -f owasp.sat.agoat -l .\scripts\bypass_root_java.js
+
+[9] Bypass Java + Natif
+frida -U -f owasp.sat.agoat -l .\scripts\bypass_root_java.js -l .\scripts\bypass_root_native.js
+
+[10] Test avec Objection
+objection -g owasp.sat.agoat explore --startup-command "android root disable"
